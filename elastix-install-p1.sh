@@ -108,6 +108,9 @@ systemctl disable chronyd
 systemctl disable firewalld
 systemctl disable iptables
 
+#Fix for "/bin/df: '/etc/fstab': No such file or directory"
+touch /etc/fstab
+
 #/etc/rc.d/init.d/elastix-firstboot start
 clear
 echo "Time to reboot!"
