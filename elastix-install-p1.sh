@@ -3,21 +3,21 @@
 #Shut off SElinux & Disable firewall if running.
 setenforce 0
 sed -i 's/\(^SELINUX=\).*/\SELINUX=disabled/' /etc/selinux/config
-chkconfig chronyd off
-service chronyd stop
-systemctl disable firewalld.service
-systemctl stop firewalld.service
 
 #Download Elastix and get it ready to install
 if [[ $(which wget) = "" ]]; then
 	yum install -y wget
 fi
-wget http://downloads.sourceforge.net/project/elastix/Elastix%20PBX%20Appliance%20Software/4.0.0/Elastix-4.0.74-Stable-x86_64-bin-10Feb2016.iso
+if [ -e Elastix-4.0.74-Stable-x86_64-bin-10Feb2016.iso ]; then
+	echo "ISO is already avalible. Skipping download"
+else
+	wget http://downloads.sourceforge.net/project/elastix/Elastix%20PBX%20Appliance%20Software/4.0.0/Elastix-4.0.74-Stable-x86_64-bin-10Feb2016.iso
+fi
 yum install -y epel-release
 yum install p7zip p7zip-plugins -y
 mkdir -p /mnt/iso
 7z x -o/mnt/iso/ Elastix-4.0.74-Stable-x86_64-bin-10Feb2016.iso
-
+sleep 1
 
 #Add CD as local Repository so we can install
 echo "
@@ -89,18 +89,24 @@ echo "About to install Elaxtix 4.0.74-Stable-x86_64. You have 5 seconds to press
 sleep 5
 
 yum clean all
-yum -y --nogpg install $(cat ~/instnl.txt)
+yum -y update 
+sleep 3
+yum -y --nogpg install $(cat instnl.txt)
+sleep 3
+#Run a 2nd time in case it missed something
+yum -y --nogpg install $(cat instnl.txt)
+yum -y update 
 
-#Shut off SElinux & Firewall if it got installed and turned back on
-chkconfig chronyd off
-service chronyd stop
-systemctl disable firewalld.service
-systemctl stop firewalld.service
+#Shut off SElinux and Firewall. Be sure to configure it in Elastix!
 setenforce 0
 sed -i 's/\(^SELINUX=\).*/\SELINUX=disabled/' /etc/selinux/config
-#rm -rf /etc/yum.repos.d/elastix-cd.repo /mnt/iso/ Elastix-4.0.74-Stable-x86_64-bin-10Feb2016.iso /etc/yum.repos.d/elastix.repo 
-#mv /etc/yum.repos.d/elastix.repo.rpmnew /etc/yum.repos.d/elastix.repo 
-#yum clean all
+cp -a /etc/sysconfig/iptables /etc/sysconfig/iptables.org-elastix-"$(/bin/date "+%Y-%m-%d-%H-%M-%S")"
+systemctl stop chronyd
+systemctl stop firewalld
+systemctl stop iptables
+systemctl disable chronyd
+systemctl disable firewalld
+systemctl disable iptables
 
 #/etc/rc.d/init.d/elastix-firstboot start
 clear
