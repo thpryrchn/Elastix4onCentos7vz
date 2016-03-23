@@ -13,9 +13,20 @@ if [ -e Elastix-4.0.74-Stable-x86_64-bin-10Feb2016.iso ]; then
 else
 	wget http://downloads.sourceforge.net/project/elastix/Elastix%20PBX%20Appliance%20Software/4.0.0/Elastix-4.0.74-Stable-x86_64-bin-10Feb2016.iso
 fi
+if [ -e /etc/yum.repos.d/commercial-addons.repo ]; then
+	echo "Seems to have an Install attemt that failed. Clean up yum"
+	rm -f /etc/yum.repos.d/elastix* /etc/yum.repos.d/commercial-addons.repo
+	yum clean all
+	yum -y update
+fi
+yum -y update
 yum install -y epel-release
 yum install p7zip p7zip-plugins -y
 mkdir -p /mnt/iso
+if [[ $(which 7z) = "" ]]; then
+	echo "7x is missing. Try running again"
+	exit 1
+fi
 7z x -o/mnt/iso/ Elastix-4.0.74-Stable-x86_64-bin-10Feb2016.iso
 sleep 1
 
