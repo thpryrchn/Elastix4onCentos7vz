@@ -11,7 +11,7 @@ mv /etc/yum.repos.d/elastix.repo.rpmnew /etc/yum.repos.d/elastix.repo
 yum clean all
 mkdir .poop
 cd .poop
-yum -r reinstall elastix*
+yum -y reinstall elastix*
 cd ..
 rm -rf .poop
 yum -y update
