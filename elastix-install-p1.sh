@@ -102,10 +102,10 @@ sleep 5
 yum clean all
 yum -y update 
 sleep 3
-yum -y --nogpg install $(cat instnl.txt)
+yum -y --nogpg install $(cat inst1.txt)
 sleep 3
 #Run a 2nd time in case it missed something
-yum -y --nogpg install $(cat instnl.txt)
+yum -y --nogpg install $(cat inst2.txt)
 yum -y update 
 
 #Shut off SElinux and Firewall. Be sure to configure it in Elastix!
@@ -118,12 +118,17 @@ systemctl stop iptables
 systemctl disable chronyd
 systemctl disable firewalld
 systemctl disable iptables
-
+systemctl disable elastix-firstboot
 #Fix for "/bin/df: '/etc/fstab': No such file or directory"
 touch /etc/fstab
 
 #/etc/rc.d/init.d/elastix-firstboot start
-clear
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
+echo " "
 echo "Time to reboot!"
 echo " "
 echo "Run elastix-install-p2.sh after the reboot."

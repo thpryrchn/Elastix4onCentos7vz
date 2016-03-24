@@ -3,6 +3,7 @@ echo "Now it is time to setup your Databases & Admin passwords"
 read -p "Press Enter to Continue, or CTRL-C to abort."
 setenforce 0
 sed -i 's/\(^SELINUX=\).*/\SELINUX=disabled/' /etc/selinux/config
+systemctl enable elastix-firstboot
 /etc/rc.d/init.d/elastix-firstboot start
 echo "Now we are running some cleanup, and making sure everything is up to date"
 rm -rf /etc/yum.repos.d/elastix-cd.repo /mnt/iso/ Elastix-4.0.74-Stable-x86_64-bin-10Feb2016.iso
