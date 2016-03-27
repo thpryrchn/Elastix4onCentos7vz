@@ -186,7 +186,7 @@ kernel-tools
 kernel-tools-libs
 kexec-tools
 keyutils-libs
-partx
+kpartx
 krb5-libs
 lcdelastix
 lcdproc
