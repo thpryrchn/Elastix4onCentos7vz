@@ -42,4 +42,4 @@ After it finishes, it will have you reboot once more. Then you can configure thr
 
 If you can't access the web interface after the reboot, it is because you may have a firewall that is preventing it. To access it, you can temporarrly disable the firewall by running `systemctl stop iptables` and `systemctl stop firewalld`
 
-###Be sure to configure the Firewall through Elastix, or however else you choose too, as the install disables it.
+###Be sure to configure the Firewall through Elastix, or however else you choose too.
