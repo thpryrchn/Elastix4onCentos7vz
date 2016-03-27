@@ -186,12 +186,7 @@ kernel-tools
 kernel-tools-libs
 kexec-tools
 keyutils-libs
-kmod
-kmod-dahdi
-kmod-libs
-kmod-rhino
-kmod-wanpipe
-kpartx
+partx
 krb5-libs
 lcdelastix
 lcdproc

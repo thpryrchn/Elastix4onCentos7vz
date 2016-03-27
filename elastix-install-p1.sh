@@ -104,21 +104,24 @@ yum -y update
 sleep 3
 yum -y --nogpg install $(cat inst1.txt)
 sleep 3
+yum -y install asterisk
+yum -y install elastix
 #Run a 2nd time in case it missed something
 yum -y --nogpg install $(cat inst2.txt)
+yum -clean all
 yum -y update 
 
 #Shut off SElinux and Firewall. Be sure to configure it in Elastix!
 setenforce 0
 sed -i 's/\(^SELINUX=\).*/\SELINUX=disabled/' /etc/selinux/config
 cp -a /etc/sysconfig/iptables /etc/sysconfig/iptables.org-elastix-"$(/bin/date "+%Y-%m-%d-%H-%M-%S")"
-systemctl stop chronyd
-systemctl stop firewalld
-systemctl stop iptables
-systemctl disable chronyd
-systemctl disable firewalld
-systemctl disable iptables
-systemctl disable elastix-firstboot
+# systemctl stop chronyd
+# systemctl stop firewalld
+# systemctl stop iptables
+# systemctl disable chronyd
+# systemctl disable firewalld
+# systemctl disable iptables
+# systemctl disable elastix-firstboot
 #Fix for "/bin/df: '/etc/fstab': No such file or directory"
 touch /etc/fstab
 
