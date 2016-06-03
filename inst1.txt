@@ -225,6 +225,7 @@ lvm2-libs
 lzo
 mailcap
 mailman
+mailx
 make
 man-db
 mariadb
