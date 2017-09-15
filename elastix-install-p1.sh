@@ -42,8 +42,8 @@ enabled=1
 #Add Online, so it is up to date from the start
 echo '[commercial-addons]
 name=Commercial-Addons RPM Repository for Elastix
-mirrorlist=http://mirror.elastix.org/?release=4&arch=$basearch&repo=commercial_addons
-#baseurl=http://repo.elastix.org/elastix/4/commercial_addons/$basearch/
+#mirrorlist=http://mirror.elastix.org/?release=4&arch=$basearch&repo=commercial_addons
+baseurl=http://repo.elastix.org/elastix/4/commercial_addons/$basearch/
 gpgcheck=1
 enabled=1
 gpgkey=http://repo.elastix.org/elastix/RPM-GPG-KEY-Elastix
@@ -56,7 +56,7 @@ enabled=1
 
 [iperfex]
 name=IPERFEX RPMs repository
-baseurl=http://packages.iperfex.com/centos/$releasever/$basearch/
+baseurl=http://packages.iperfex.com/centos/7/$basearch/
 gpgkey=http://packages.iperfex.com/RPM-GPG-KEY-iperfex-repository
 enabled=1
 gpgcheck=1
@@ -64,8 +64,8 @@ gpgcheck=1
 
 echo '[elastix-base]
 name=Base RPM Repository for Elastix 
-mirrorlist=http://mirror.elastix.org/?release=4&arch=$basearch&repo=base
-#baseurl=http://repo.elastix.org/elastix/4/base/$basearch/
+#mirrorlist=http://mirror.elastix.org/?release=4&arch=$basearch&repo=base
+baseurl=http://repo.elastix.org/elastix/4/base/$basearch/
 gpgcheck=1
 enabled=1
 gpgkey=http://repo.elastix.org/elastix/RPM-GPG-KEY-Elastix
@@ -80,16 +80,16 @@ gpgkey=http://repo.elastix.org/elastix/RPM-GPG-KEY-Elastix
 
 [elastix-beta]
 name=Beta RPM Repository for Elastix 
-mirrorlist=http://mirror.elastix.org/?release=4&arch=$basearch&repo=beta
-#baseurl=http://repo.elastix.org/elastix/4/beta/$basearch/
+#mirrorlist=http://mirror.elastix.org/?release=4&arch=$basearch&repo=beta
+baseurl=http://repo.elastix.org/elastix/4/beta/$basearch/
 gpgcheck=1
 enabled=0
 gpgkey=http://repo.elastix.org/elastix/RPM-GPG-KEY-Elastix
 
 [elastix-extras]
 name=Extras RPM Repository for Elastix 
-mirrorlist=http://mirror.elastix.org/?release=4&arch=$basearch&repo=extras
-#baseurl=http://repo.elastix.org/elastix/4/extras/$basearch/
+#mirrorlist=http://mirror.elastix.org/?release=4&arch=$basearch&repo=extras
+baseurl=http://repo.elastix.org/elastix/4/extras/$basearch/
 gpgcheck=1
 enabled=1
 gpgkey=http://repo.elastix.org/elastix/RPM-GPG-KEY-Elastix
