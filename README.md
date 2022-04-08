@@ -1,3 +1,14 @@
+## This is Depricated. 
+
+The netinstall for Issabel should be used as Elastix is no longer maintained. IssabelPBX is a fork of Elastix, so it is the same Familliar interface and features, but updated, and more added. The NetInstall script can be found here: https://sourceforge.net/projects/issabelpbx/files/Issabel%204/ -- Do not use the Beta netinstall... It is too old, and the regular install script has a prompt for installing the beta repo. If this is a Production PBX server, then don't use the Beta Repos.
+
+The netinstall script borks the firewall, so you can't open the webinterface... But just ssh into your server, and type in `systemctl stop iptables`, then login to the webinterface, then enable the firewall there, then reboot the server. Then everything seems to work :)
+
+
+Here is the Original readme:
+____
+
+
 # Elastix4onCentos7vz
 ###Install Elastix 4 on Centos 7 OpenVZ & Other VPS's
 
