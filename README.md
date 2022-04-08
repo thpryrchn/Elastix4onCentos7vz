@@ -1,6 +1,8 @@
 ## This is Depricated. 
 
-The netinstall for Issabel should be used as Elastix is no longer maintained. IssabelPBX is a fork of Elastix, so it is the same Familliar interface and features, but updated, and more added. The NetInstall script can be found here: https://sourceforge.net/projects/issabelpbx/files/Issabel%204/ -- Do not use the Beta netinstall... It is too old, and the regular install script has a prompt for installing the beta repo. If this is a Production PBX server, then don't use the Beta Repos.
+The netinstall for Issabel should be used as Elastix is no longer maintained. IssabelPBX is a fork of Elastix, so it is the same Familliar interface and features, but updated, and more added.
+
+The NetInstall script can be found here: https://sourceforge.net/projects/issabelpbx/files/Issabel%204/ -- Do not use the Beta netinstall... It is too old, and the regular install script has a prompt for installing the beta repo. If this is a Production PBX server, then don't use the Beta Repos.
 
 The netinstall script borks the firewall, so you can't open the webinterface... But just ssh into your server, and type in `systemctl stop iptables`, then login to the webinterface, then enable the firewall there, then reboot the server. Then everything seems to work :)
 
@@ -10,7 +12,7 @@ ____
 
 
 # Elastix4onCentos7vz
-###Install Elastix 4 on Centos 7 OpenVZ & Other VPS's
+### Install Elastix 4 on Centos 7 OpenVZ & Other VPS's
 
 Ok, So I wanted to setup Elastix in a cloud. There are some VPS's that are built for VOIP, but if you want it even cheaper than $30 per month, then there are other options out there. If only you could just install it on a VPS with centos 7... I use [Hostmada's OVZ-3](https://hostmada.com/openvz-vps) plan for $5.99 per month. It may not be the fastest, but it works pretty well for me.
 
@@ -53,4 +55,4 @@ After it finishes, it will have you reboot once more. Then you can configure thr
 
 If you can't access the web interface after the reboot, it is because you may have a firewall that is preventing it. To access it, you can temporarrly disable the firewall by running `systemctl stop iptables` and `systemctl stop firewalld`
 
-###Be sure to configure the Firewall through Elastix, or however else you choose too.
+### Be sure to configure the Firewall through Elastix, or however else you choose too.
